@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fokus-Kompass</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0A1A2F" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("service-worker.js")
+          .catch(console.error);
+      });
+    }
+  </script>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-inner">
+        <h1 class="header-title">Fokus-Kompass</h1>
+        <p class="header-subtitle">Ich merke früh, wenn ich kippe – und bleibe bei mir.</p>
+      </div>
+    </header>
+
+    <main class="main">
+
+      <!-- Screen: Timer / Fokus -->
+      <section class="screen screen--active" id="screen-timer">
+        <div class="content">
+          <p class="label">Fokusblock</p>
+          <h2 class="headline">45 Minuten bei mir bleiben.</h2>
+          <p class="paragraph">
+            Diese App ist kein Leistungsdruck. Sie erinnert dich nur daran,
+            rechtzeitig zu stoppen, bevor du dich verlierst.
+          </p>
+
+          <div class="timer-box">
+            <div id="timer-display" class="timer-display">45:00</div>
+            <div id="mode-indicator" class="mode-indicator mode-indicator--focus">
+              Fokusblock 1
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button id="start-btn" class="button button--primary">Start</button>
+            <button id="pause-btn" class="button button--secondary">Pause</button>
+            <button id="reset-btn" class="button button--ghost">Reset</button>
+          </div>
+
+          <p class="hint">
+            Regel: Ein Block = 45 Minuten Fokus. Danach kommt automatisch ein kurzer Check-in.
+          </p>
+        </div>
+      </section>
+
+      <!-- Screen: Check -->
+      <section class="screen" id="screen-check">
+        <div class="content">
+          <p class="label">Check-in</p>
+          <h2 class="headline">Kurz zu dir zurückkommen.</h2>
+          <p class="paragraph">
+            Bevor du weiter machst: einmal ehrlich hinspüren. Kein Urteil, nur Wahrnehmung.
+          </p>
+
+          <div class="check-group">
+            <label class="check-label">
+              Energie
+              <input type="range" id="energy-slider" min="1" max="5" value="3" />
+              <span id="energy-value" class="check-value">3/5</span>
+            </label>
+
+            <label class="check-label">
+              Fokus
+              <input type="range" id="focus-slider" min="1" max="5" value="3" />
+              <span id="focus-value" class="check-value">3/5</span>
+            </label>
+
+            <label class="check-label">
+              Unruhe
+              <input type="range" id="restless-slider" min="1" max="5" value="2" />
+              <span id="restless-value" class="check-value">2/5</span>
+            </label>
+          </div>
+
+          <div class="divider"></div>
+
+          <p class="paragraph strong">
+            Kilosekunde der Wahrheit:
+          </p>
+          <p class="question">
+            Merkst du dich gerade – oder verlierst du dich?
+          </p>
+
+          <div class="button-row">
+            <button id="self-btn" class="button button--primary">
+              Ich merke mich
+            </button>
+            <button id="lost-btn" class="button button--alert">
+              Ich verliere mich
+            </button>
+          </div>
+
+          <p id="check-feedback" class="hint"></p>
+        </div>
+      </section>
+
+      <!-- Screen: Reset -->
+      <section class="screen" id="screen-reset">
+        <div class="content content--center">
+          <p class="label">Reset</p>
+          <h2 class="headline">2 Minuten nur für dich.</h2>
+          <p class="paragraph">
+            Kein Denken, kein Planen. Nur Körper und Gegenwart.
+          </p>
+
+          <div class="reset-box">
+            <div id="reset-timer" class="timer-display timer-display--small">
+              02:00
+            </div>
+            <ul class="reset-steps">
+              <li>Schultern locker lassen.</li>
+              <li>3×: langsam einatmen, länger ausatmen.</li>
+              <li>Sieh dir 3 Dinge im Raum bewusst an.</li>
+              <li>Erinnere dich: Du bist im Heute, nicht im Damals.</li>
+            </ul>
+          </div>
+
+          <button id="reset-done-btn" class="button button--primary">
+            Reset abgeschlossen
+          </button>
+          <p class="hint">
+            Danach kannst du entscheiden, ob du einen neuen Fokusblock startest
+            oder für heute genug gemacht hast.
+          </p>
+        </div>
+      </section>
+
+      <!-- Screen: Choice after reset or self-check -->
+      <section class="screen" id="screen-next">
+        <div class="content content--center">
+          <p class="label">Weiter oder stoppen</p>
+          <h2 class="headline">Wie geht es jetzt weiter?</h2>
+          <p class="paragraph">
+            Du musst nichts beweisen. Du darfst aufhören.
+          </p>
+
+          <div class="button-column">
+            <button id="next-block-btn" class="button button--primary">
+              Neuer Fokusblock
+            </button>
+            <button id="finish-btn" class="button button--ghost">
+              Für heute reicht's
+            </button>
+          </div>
+
+          <p class="hint">
+            „Für heute reicht's“ ist kein Scheitern. Es ist Selbstschutz.
+          </p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+    </html>
