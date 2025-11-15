@@ -7,15 +7,14 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "Inter", "Segoe UI", Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Inter, Segoe UI, Roboto, sans-serif;
   background: #0b1724;
   color: #e2e8f0;
   display: flex;
   justify-content: center;
 }
 
-/* App Wrapper */
+/* App */
 .app {
   width: 100%;
   max-width: 430px;
@@ -28,21 +27,21 @@ body {
 /* Header */
 .header {
   background: #0b2840;
-  color: #e2e8f0;
   padding: 16px 20px 22px;
   border-radius: 0 0 22px 22px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
 }
 
 .header-inner {
-  max-width: 380px;
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 .header-title {
   margin: 0;
   font-size: 20px;
-  font-weight: 600;
 }
 
 .header-subtitle {
@@ -51,19 +50,34 @@ body {
   color: #93c5fd;
 }
 
-/* Main */
+/* Buttons in Header */
+.icon-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,0.5);
+  background: rgba(15,23,42,0.4);
+  font-size: 12px;
+  cursor: pointer;
+}
+.icon-button--active {
+  border-color: #22c55e;
+}
+.icon-button--disabled {
+  opacity: 0.5;
+}
+
+/* Main Layout */
 .main {
   flex: 1;
   padding: 20px;
-  display: flex;
 }
 
-/* Screens */
 .screen {
   display: none;
-  width: 100%;
 }
-
 .screen--active {
   display: block;
 }
@@ -73,227 +87,160 @@ body {
   margin: 0 auto;
 }
 
-.content--center {
-  text-align: center;
-}
 
+
+/* LABELS */
 .label {
   font-size: 11px;
-  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #64748b;
-  margin-bottom: 8px;
+  opacity: 0.7;
 }
 
 .headline {
   font-size: 22px;
-  font-weight: 600;
-  color: #e2e8f0;
-  margin: 0 0 8px;
+  margin-bottom: 8px;
 }
 
 .paragraph {
   font-size: 14px;
-  color: #cbd5f5;
-  line-height: 1.5;
-  margin: 0 0 18px;
+  opacity: 0.9;
+  margin-bottom: 18px;
 }
 
-.paragraph.strong {
-  font-weight: 600;
-}
-
-/* Timer Box */
+/* TIMER UI */
 .timer-box {
-  margin: 18px 0;
-  padding: 20px 16px 18px;
-  border-radius: 18px;
+  margin: 16px 0;
+  padding: 20px 16px;
   background: radial-gradient(circle at top, #1d3557, #020617);
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.7);
+  border-radius: 18px;
   text-align: center;
 }
 
 .timer-display {
   font-size: 52px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  margin-bottom: 8px;
-}
-
-.timer-display--small {
-  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .mode-indicator {
-  display: inline-block;
   padding: 4px 12px;
   border-radius: 999px;
-  font-size: 12px;
-  font-weight: 500;
-  background: #0f172a;
-  border: 1px solid #1d4ed8;
-  color: #bfdbfe;
-}
-
-.mode-indicator--focus {
-  border-color: #22c55e;
+  border: 1px solid #22c55e;
   color: #bbf7d0;
+  font-size: 12px;
 }
 
 /* Buttons */
 .button-row {
   display: flex;
   gap: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
-
 .button-column {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 18px;
+  gap: 12px;
 }
 
 .button {
   flex: 1;
-  border: none;
+  padding: 13px;
   border-radius: 14px;
-  padding: 12px 16px;
   font-size: 15px;
-  font-weight: 500;
   cursor: pointer;
-  transition: background 0.15s ease, transform 0.1s ease,
-    box-shadow 0.15s ease, color 0.15s ease;
+  border: none;
 }
 
 .button--primary {
   background: #22c55e;
   color: #022c22;
-  box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
 }
-
-.button--primary:hover {
-  background: #16a34a;
-}
-
-.button--primary:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 10px rgba(22, 163, 74, 0.5);
-}
-
 .button--secondary {
   background: #1d3557;
   color: #e2e8f0;
 }
-
-.button--secondary:hover {
-  background: #1e293b;
-}
-
 .button--ghost {
   background: transparent;
-  color: #93c5fd;
   border: 1px solid #1d4ed8;
+  color: #93c5fd;
 }
-
-.button--ghost:hover {
-  background: rgba(37, 99, 235, 0.15);
-}
-
 .button--alert {
   background: #f97316;
   color: #111827;
-  box-shadow: 0 6px 16px rgba(248, 113, 113, 0.5);
 }
 
-.button--alert:hover {
-  background: #ea580c;
-}
 
-/* Check */
+/* Check Screen */
 .check-group {
   background: #020617;
-  padding: 16px 14px 10px;
+  padding: 14px;
   border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.8);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .check-label {
-  display: block;
-  font-size: 13px;
   margin-bottom: 10px;
-  color: #e5e7eb;
+  display: block;
 }
 
 .check-value {
   font-size: 12px;
-  color: #9ca3af;
-  margin-left: 6px;
+  opacity: 0.7;
 }
 
-input[type="range"] {
-  width: 100%;
-  margin-top: 4px;
-}
-
-/* Divider */
 .divider {
   height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    #4b5563,
-    transparent
-  );
-  margin: 12px 0 10px;
+  background: #475569;
+  margin: 14px 0;
 }
 
-/* Question */
 .question {
   font-size: 15px;
-  font-weight: 500;
-  margin: 4px 0 10px;
-  color: #e5e7eb;
+  margin-bottom: 10px;
 }
 
-/* Reset */
+/* Reset Screen */
 .reset-box {
-  margin: 14px 0 18px;
-  padding: 16px 14px 14px;
+  padding: 16px;
   background: #020617;
-  border-radius: 18px;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.8);
+  border-radius: 16px;
+  margin-bottom: 20px;
 }
 
 .reset-steps {
-  list-style: none;
   padding-left: 0;
-  margin: 12px 0 0;
-  text-align: left;
+  list-style: none;
+  margin-top: 10px;
   font-size: 13px;
-  color: #cbd5f5;
 }
 
-.reset-steps li {
-  margin-bottom: 4px;
+/* Statistik */
+.stats-line {
+  background: #0b2840;
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin-bottom: 8px;
 }
 
-/* Hint */
-.hint {
-  font-size: 12px;
-  color: #9ca3af;
-  margin-top: 8px;
+.stats-chart {
+  display:flex;
+  gap:6px;
+  margin-top:12px;
+  justify-content:space-between;
 }
 
-/* Responsive tweak */
-@media (max-width: 380px) {
-  .header-subtitle {
-    font-size: 12px;
-  }
+.stats-chart-bar {
+  flex:1;
+  height:70px;
+  background:#1e3a8a;
+  border-radius:6px;
+  position:relative;
+}
 
-  .timer-display {
-    font-size: 46px;
-  }
+.stats-chart-bar-fill {
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#3b82f6;
+  border-radius:6px;
 }
