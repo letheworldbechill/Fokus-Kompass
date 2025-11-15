@@ -22,18 +22,33 @@
   <div class="app">
     <header class="header">
       <div class="header-inner">
-        <h1 class="header-title">Fokus-Kompass</h1>
-        <p class="header-subtitle">Ich merke früh, wenn ich kippe – und bleibe bei mir.</p>
+        <div class="header-text">
+          <h1 class="header-title">Fokus-Kompass</h1>
+          <p class="header-subtitle">Ich merke früh, wenn ich kippe – und bleibe bei mir.</p>
+        </div>
+
+        <!-- Notification Button -->
+        <button id="notify-btn" class="icon-button" type="button">
+          <span class="icon-button__icon">🔔</span>
+          <span id="notify-label" class="icon-button__label">Aus</span>
+        </button>
+
+        <!-- Statistics Button -->
+        <button id="stats-btn" class="icon-button" type="button">
+          <span class="icon-button__icon">📊</span>
+          <span class="icon-button__label">Stats</span>
+        </button>
       </div>
     </header>
 
     <main class="main">
 
-      <!-- Screen: Timer / Fokus -->
+      <!-- SCREEN: TIMER -->
       <section class="screen screen--active" id="screen-timer">
         <div class="content">
           <p class="label">Fokusblock</p>
           <h2 class="headline">45 Minuten bei mir bleiben.</h2>
+
           <p class="paragraph">
             Diese App ist kein Leistungsdruck. Sie erinnert dich nur daran,
             rechtzeitig zu stoppen, bevor du dich verlierst.
@@ -58,14 +73,12 @@
         </div>
       </section>
 
-      <!-- Screen: Check -->
+      <!-- SCREEN: CHECK -->
       <section class="screen" id="screen-check">
         <div class="content">
           <p class="label">Check-in</p>
           <h2 class="headline">Kurz zu dir zurückkommen.</h2>
-          <p class="paragraph">
-            Bevor du weiter machst: einmal ehrlich hinspüren. Kein Urteil, nur Wahrnehmung.
-          </p>
+          <p class="paragraph">Bevor du weiter machst: einmal ehrlich hinspüren.</p>
 
           <div class="check-group">
             <label class="check-label">
@@ -87,80 +100,70 @@
             </label>
           </div>
 
-          <div class="divider"></div>
-
-          <p class="paragraph strong">
-            Kilosekunde der Wahrheit:
-          </p>
-          <p class="question">
-            Merkst du dich gerade – oder verlierst du dich?
-          </p>
+          <p class="paragraph strong">Kilosekunde der Wahrheit:</p>
+          <p class="question">Merkst du dich gerade – oder verlierst du dich?</p>
 
           <div class="button-row">
-            <button id="self-btn" class="button button--primary">
-              Ich merke mich
-            </button>
-            <button id="lost-btn" class="button button--alert">
-              Ich verliere mich
-            </button>
+            <button id="self-btn" class="button button--primary">Ich merke mich</button>
+            <button id="lost-btn" class="button button--alert">Ich verliere mich</button>
           </div>
 
           <p id="check-feedback" class="hint"></p>
         </div>
       </section>
 
-      <!-- Screen: Reset -->
+      <!-- SCREEN: RESET -->
       <section class="screen" id="screen-reset">
         <div class="content content--center">
           <p class="label">Reset</p>
           <h2 class="headline">2 Minuten nur für dich.</h2>
-          <p class="paragraph">
-            Kein Denken, kein Planen. Nur Körper und Gegenwart.
-          </p>
 
           <div class="reset-box">
-            <div id="reset-timer" class="timer-display timer-display--small">
-              02:00
-            </div>
+            <div id="reset-timer" class="timer-display timer-display--small">02:00</div>
             <ul class="reset-steps">
               <li>Schultern locker lassen.</li>
-              <li>3×: langsam einatmen, länger ausatmen.</li>
-              <li>Sieh dir 3 Dinge im Raum bewusst an.</li>
-              <li>Erinnere dich: Du bist im Heute, nicht im Damals.</li>
+              <li>3× langsam einatmen, länger ausatmen.</li>
+              <li>3 Dinge bewusst ansehen.</li>
+              <li>Du bist im Heute, nicht im Damals.</li>
             </ul>
           </div>
 
           <button id="reset-done-btn" class="button button--primary">
             Reset abgeschlossen
           </button>
-          <p class="hint">
-            Danach kannst du entscheiden, ob du einen neuen Fokusblock startest
-            oder für heute genug gemacht hast.
-          </p>
         </div>
       </section>
 
-      <!-- Screen: Choice after reset or self-check -->
+      <!-- SCREEN: NACH RESET -->
       <section class="screen" id="screen-next">
         <div class="content content--center">
           <p class="label">Weiter oder stoppen</p>
           <h2 class="headline">Wie geht es jetzt weiter?</h2>
-          <p class="paragraph">
-            Du musst nichts beweisen. Du darfst aufhören.
-          </p>
 
           <div class="button-column">
-            <button id="next-block-btn" class="button button--primary">
-              Neuer Fokusblock
-            </button>
-            <button id="finish-btn" class="button button--ghost">
-              Für heute reicht's
-            </button>
+            <button id="next-block-btn" class="button button--primary">Neuer Fokusblock</button>
+            <button id="finish-btn" class="button button--ghost">Für heute reicht's</button>
           </div>
+        </div>
+      </section>
 
-          <p class="hint">
-            „Für heute reicht's“ ist kein Scheitern. Es ist Selbstschutz.
-          </p>
+      <!-- SCREEN: STATISTIK -->
+      <section class="screen" id="screen-stats">
+        <div class="content">
+          <p class="label">Statistik</p>
+          <h2 class="headline">Dein Fokus-Verlauf</h2>
+
+          <div id="stats-today" class="stats-line">Heute: 0 Blöcke</div>
+          <div id="stats-yesterday" class="stats-line">Gestern: 0 Blöcke</div>
+          <div id="stats-week" class="stats-line">Woche: 0 Blöcke</div>
+          <div id="stats-total" class="stats-line">Insgesamt: 0 Blöcke</div>
+
+          <h3 class="headline" style="font-size:17px;margin-top:20px;">Wochenverlauf</h3>
+          <div id="stats-chart" class="stats-chart"></div>
+
+          <div class="button-row" style="margin-top:24px;">
+            <button id="stats-back-btn" class="button button--ghost">Zurück</button>
+          </div>
         </div>
       </section>
 
@@ -169,4 +172,4 @@
 
   <script src="app.js"></script>
 </body>
-    </html>
+  </html>
